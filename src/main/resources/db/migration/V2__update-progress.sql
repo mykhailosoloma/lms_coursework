@@ -1,0 +1,5 @@
+ALTER TABLE progress ALTER COLUMN status SET NOT NULL;
+
+ALTER TABLE progress
+ADD CONSTRAINT chk_progress_status
+CHECK (status IN ('NOT_STARTED', 'STARTED', 'COMPLETED'));

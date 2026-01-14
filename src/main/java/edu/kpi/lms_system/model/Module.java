@@ -13,9 +13,9 @@ import java.util.List;
 public class Module {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "module_id")
-    private Long moduleId;
+    private Long id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -28,7 +28,7 @@ public class Module {
     @ToString.Exclude
     private Course course;
 
-    @OneToMany(mappedBy = "modules", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Lesson> lessons;
 

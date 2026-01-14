@@ -24,10 +24,11 @@ public class Progress {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    private Status status = Status.NOT_STARTED;
 
     @Column(name = "last_accessed")
-    private LocalDateTime last_accessed = LocalDateTime.now();
+    @org.hibernate.annotations.CreationTimestamp
+    private LocalDateTime lastAccessed;
 
     public enum Status {
         NOT_STARTED,

@@ -1,7 +1,6 @@
 package edu.kpi.lms_system.model;
 
 import jakarta.persistence.*;
-import jdk.jfr.ContentType;
 import lombok.Data;
 
 @Data
@@ -11,7 +10,7 @@ import lombok.Data;
 public class Lesson {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lesson_id")
     private Long id;
 
@@ -21,6 +20,10 @@ public class Lesson {
     @Enumerated(EnumType.STRING)
     @Column(name = "content_type")
     private ContentType contentType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "module_id", nullable = false)
+    private Module module;
 
     public enum ContentType{
         VIDEO,

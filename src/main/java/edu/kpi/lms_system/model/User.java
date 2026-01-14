@@ -28,8 +28,9 @@ public class User {
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "created_at", nullable = false, updatable = false)
+    @org.hibernate.annotations.CreationTimestamp
+    private LocalDateTime createdAt;
 
     public enum Role {
         STUDENT, INSTRUCTOR, ADMIN

@@ -9,4 +9,5 @@ public class LessonResponseDto {
     private Long id;
     private String title;
     private Lesson.ContentType contentType;
+    private Long moduleId;
 }

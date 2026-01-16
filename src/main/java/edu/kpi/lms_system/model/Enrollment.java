@@ -25,7 +25,7 @@ public class Enrollment {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @Column(name = "enrollment_at")
+    @Column(name = "enrolled_at")
     @org.hibernate.annotations.CreationTimestamp
     private LocalDateTime enrollmentAt;
 }

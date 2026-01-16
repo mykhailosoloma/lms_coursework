@@ -3,12 +3,34 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: lms_app_container
+    container_name: lms_app_v2
     ports:
       - "8080:8080"
+    depends_on:
+      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/lms_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/lms_db_v2
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: password123
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_SQL_INIT_MODE: never
+    networks:
+      - lms-network
+  db:
+    image: postgres:15-alpine
+    container_name: lms_db_container_v2
+    environment:
+      POSTGRES_DB: lms_db_v2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data_v2:/var/lib/postgresql/data
+    networks:
+      - lms-network
+
+volumes:
+  db_data_v2:
+
+networks:
+  lms-network:

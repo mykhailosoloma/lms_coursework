@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class CourseRequestDto {
 
@@ -18,5 +20,7 @@ public class CourseRequestDto {
 
     @NotNull(message = "Instructor id is required")
     private Long instructorId;
+
+    private List<String> modulesTitles;
 
 }

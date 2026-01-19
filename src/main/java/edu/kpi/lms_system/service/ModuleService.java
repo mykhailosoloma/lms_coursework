@@ -45,4 +45,11 @@ public class ModuleService {
 
         return moduleMapper.toDto(moduleRepository.save(module));
     }
+    public List<ModuleResponseDto> findModulesByCourseTitle(String courseTitle) {
+        List<Module> modules = moduleRepository.findModulesByCourseTitleNative(courseTitle);
+        return modules.stream()
+                .map(moduleMapper::toDto)
+                .toList();
+    }
+
 }

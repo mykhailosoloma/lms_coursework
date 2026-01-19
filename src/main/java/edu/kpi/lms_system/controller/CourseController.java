@@ -38,4 +38,9 @@ public class CourseController {
     public ResponseEntity<List<CourseResponseDto>> getCoursesByCategory(@RequestParam String category) {
         return ResponseEntity.ok(courseService.findByCategory(category));
     }
+
+    @GetMapping("/analytics/content-report")
+    public ResponseEntity<List<Map<String, Object>>> getContentReport() {
+        return ResponseEntity.ok(courseService.getFullContentReport());
+    }
 }

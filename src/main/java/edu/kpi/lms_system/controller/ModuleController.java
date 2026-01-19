@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/modules")
 @RequiredArgsConstructor
@@ -27,5 +29,10 @@ public class ModuleController {
             @RequestParam String newTitle
     ) {
         return ResponseEntity.ok(moduleService.updateModule(id, newTitle));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ModuleResponseDto>> findModulesByCourseName(@RequestParam String courseTitle) {
+        return ResponseEntity.ok(moduleService.findModulesByCourseTitle(courseTitle));
     }
 }

@@ -66,4 +66,8 @@ public class CourseService {
                 .map(courseMapper::toDto)
                 .toList();
     }
+    @Transactional(readOnly = true)
+    public List<Map<String, Object>> getFullContentReport() {
+        return courseRepository.getFullContentReport();
+    }
 }
